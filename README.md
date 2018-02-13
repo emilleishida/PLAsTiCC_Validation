@@ -10,4 +10,8 @@ Check [example notebook for MODEL01](https://github.com/emilleishida/PLAsTiCC_Va
 
 **Emille** - MODEL01
 
+**Kara** - 
+
+**Mi** - 
+
 **Renee** - MODEL50
