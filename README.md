@@ -15,3 +15,5 @@ Check [example notebook for MODEL01](https://github.com/emilleishida/PLAsTiCC_Va
 **Mi** - 
 
 **Renee** - MODEL50
+
+**Rafael** - MODEL80
