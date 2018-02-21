@@ -20,6 +20,27 @@ Check [example notebook for MODEL01](https://github.com/emilleishida/PLAsTiCC_Va
 
 ---
 
+### Conda environment
+
+To make sure everyone is using the same version of Python,
+there is an `environment.yml` that defines the content of a virtual
+environment called `plasticcval`.
+
+To create it first, run (only once)
+```bash
+conda env create -f environment.yml
+```
+Now everytime you need to use it
+```bash
+source activate plasticcval
+```
+You should be running Python 3.6 and everything will be fine.
+
+If you need to leave the environment
+```
+source deactivate
+```
+
 ### `validutils`
 
 Set of tools for interacting with the supernovae simulations.
