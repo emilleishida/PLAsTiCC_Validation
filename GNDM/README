@@ -1,3 +1,5 @@
+## Notes on GNDM analysis from GN, DM
+
 cadence_analysis - cadence analysis on 20180221 data release. 
     Showed difference in cadence between Galactic and Extragalactic transients.
     This is a "feature" - there are three observing seasons in the data with
@@ -13,6 +15,22 @@ feature_KDEs - ridgeline plots of initial feature computations from 20180316
 
 features_vs_redshift - 2D KDEs of feature vs redshift to understand evolution.
     similar to above.
+
+flux_distrib - normalized flux difference = (F_obs - F-sim)/noise
+    summary_plots/ - If the noise properties are right, this should have mean =
+    0 and sigma = 1
+    This was not the case for 20180221 because template flux was not accounted
+    for in noise calculation.
+    This is fixed in 20180316 
+    noise_vs_flux/ - model by model breakdown of noise vs flux
+        There are some sharp delta function like features
+        These are the result of only a limited number of OpSim files being
+        available for the simulation, so a large number of objects all have the
+        same noise properties, even if they are bad.
+        This clustering is artificial - real surveys shouldn't show this.
+        Exarcerbated because most pipelines would fail on really big outliers.
+        Rick will add some estimate of SNR at mag=20 to help filter bad
+        observations.
 
 TODO:
     - implement more features for flux space
