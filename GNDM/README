@@ -1,0 +1,28 @@
+cadence_analysis - cadence analysis on 20180221 data release. 
+    Showed difference in cadence between Galactic and Extragalactic transients.
+    This is a "feature" - there are three observing seasons in the data with
+    ~90 day gaps. The extra galactic models are only output for the observing
+    season they are active, while the galactic models are output for all
+    seasons. This also affected the PEAK_MJD distribution, and any time-scale
+    based features. Also known to be artifact in 20180316 release (not shown
+    since essentially identical)
+
+feature_KDEs - ridgeline plots of initial feature computations from 20180316
+    release. Only some features included at present since many need to be 
+    reimplemented to work with fluxes. Computed for DDF. In progress for WFD.
+
+features_vs_redshift - 2D KDEs of feature vs redshift to understand evolution.
+    similar to above.
+
+TODO:
+    - implement more features for flux space
+    - bulk load LCs from PHOT.FITS files
+    - compute features for IDEAL dataset (from Rick)
+    - set bandwidth for KDEs from IDEAL  (from Tina)
+    - compute features on PHOTFLAG=4096 separate from al (GN)
+    - build a first pass SN classifier (DM)
+        - compare against SNmachine (GN)
+    - use isolation forest to identify outliers (GN)
+    - plot outliers (GN/DM)
+
+Stubbs/Rothschild OpSim files to Rick for alternative cadence sim. 
