@@ -14,6 +14,8 @@ Check [example notebook for MODEL01](https://github.com/emilleishida/PLAsTiCC_Va
 
 **Mi** - 
 
+**David Jones/Lluis Galbany** - MODEL 41, 42
+
 **Renee** - MODEL50
 
 **Rafael** - MODEL80
