@@ -1,0 +1,56 @@
+ ! Note that CUTWIN_CID accepts only a fraction of the total.
+
+  &SNLCINP
+     VERSION_PHOTOMETRY = 'model42'
+     TEXTFILE_PREFIX='model42_WFD_MLCS' 
+     KCOR_FILE   = 'LSST/2017-04_approx/kcor_LSST.fits'
+    !PHOTFLAG_MSKREJ  = 1024
+ 
+     NFIT_ITERATION = 2
+     INTERP_OPT     = 1
+     H0_REF     = 70.0
+ 
+     cutwin_cid   =  0,200000000000
+    !WFD
+     SNCID_IGNORE = 14304,6617347,29721061,30061453,38491855,43168349,53430659,58050852,61377650,66958594,67854454,67854723,69136227,69942354,71472222,84372706,89117428,90854376,92296850,98686532,108993466,113890847,115511009,134345280,134597008,147331750,179434116,181749932,188430173,188461738,194049368,201809151,205189878,214595980
+ 
+     cutwin_redshift  =  0.0, 2.00
+     cutwin_Trestmin  = -99.0, 0.0
+     cutwin_Trestmax  =  0.0, 9999.
+     cutwin_peakmjd   = 40000.0, 70000.0
+     cutwin_Trest     = -20.0, 60.0
+ 
+     CUTWIN_SNRMAX       = 1.0, 1.0E8
+     CUTWIN_NFILT_SNRMAX = 1.0, 99.
+    !SNCUT_SNRMAX = 'J   2.01   H  2.01   F    2.01'
+
+     cutwin_Nepoch       = 5
+     cutwin_Nband_thresh = 1
+    !EPCUT_SNRMIN = 'J   -4.00   H  -4.00   F  -4.00 '
+
+  &END
+ 
+     EXTERN_DATAFILE = 
+       'Andy_SDSS.fitres'
+       'Andy_SETe_MB.fitres'
+       'Andy_SETe_X0.fitres'
+
+ 
+  &FITINP
+     FITMODEL_NAME  = 'mlcs2k2' 
+    !FITMODEL_NAME  = 'SALT2.JLA-B14'
+
+     PRIOR_MJDSIG        = 100.
+     PRIOR_SHAPE_RANGE = -5.0, 5.0
+     PRIOR_SHAPE_SIGMA = 0.1
+
+     TREST_REJECT  = -15.0, 50.0
+     NGRID_PDF     = 0 
+
+     FILTLIST_FIT  = 'ugrizY'
+    !FILTLIST_DMPFUN = 'aaa'
+    !FITWIN_PROB = 0.001, 1.1 
+     FUDGEALL_MAXFRAC =  0.05
+     FUDGEALL_ITER1_MAXFRAC = 0.05
+  &END
+  
