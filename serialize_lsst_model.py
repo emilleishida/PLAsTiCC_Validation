@@ -3,6 +3,8 @@
 # Author: Alexandre Boucaud <aboucaud@lal.in2p3.fr>
 
 import argparse
+import os
+import glob
 from pathlib import Path
 
 from validutils.io import save_compressed
@@ -18,32 +20,51 @@ def parse_args():
                         help="Path to the output files")
     parser.add_argument('--timed', action='store_true',
                         help="Add a timer")
+    parser.add_argument('--maxitems', type=int, default=0, 
+                        help="Limit maximum number of objects to be serialized")
+    parser.add_argument('--recursive', action='store_true',
+                        help="Serialize a lot of models")
 
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
+    if args.maxitems <= 0:
+        maxitems = None
+    else:
+        maxitems = args.maxitems
 
     if args.timed:
         import time
         start = time.time()
 
-    dirpath = Path(args.directory)
+    rootdir = str(Path(args.directory))
+    if args.recursive:
+        dirpattern = os.path.join(rootdir, 'LSST_*_MODEL*')
+    else:
+        dirpattern = rootdir 
+    dirs = glob.glob(dirpattern)
 
-    # Output directory
-    outdir = Path(args.destination)
-    if not outdir.exists():
-        outdir.mkdir()
+    for thisdir in dirs:
+        message = 'Serializing light curves in: {}'.format(thisdir)
+        print(message)
 
-    # Use model directory as base name for the output file
-    filename = "{}.pkl.gz".format(dirpath.name)
-    outfile = outdir / filename
+        dirpath = Path(thisdir)
 
-    table = parse_lsst_model(dirpath)
-    save_compressed(table, outfile)
+        # Output directory
+        outdir = Path(args.destination)
+        if not outdir.exists():
+            outdir.mkdir()
 
-    print("SN data from {} saved to {}".format(dirpath.name, outfile))
+        # Use model directory as base name for the output file
+        filename = "{}.pkl.gz".format(dirpath.name)
+        outfile = outdir / filename
+
+        table = parse_lsst_model(dirpath, maxitems=maxitems)
+        save_compressed(table, outfile)
+
+        print("Light curve data from {} saved to {}".format(dirpath.name, outfile))
 
     if args.timed:
         end = time.time()

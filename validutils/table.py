@@ -94,7 +94,7 @@ def parse_header_table(table, index=0):
     return header, rows
 
 
-def parse_lsst_model(dirpath):
+def parse_lsst_model(dirpath, maxitems=None):
     """
     Parse all files in the provided directory and save relevant
     information in a dictionary saved back to disk (and compressed)
@@ -116,11 +116,13 @@ def parse_lsst_model(dirpath):
     # List all header files in the given directory
     header_files = dirpath.glob('*HEAD.FITS*')
 
+    ctr = 0
+
     datadict = {}
     for hfile in header_files:
         pfile = hfile.as_posix().replace('HEAD', 'PHOT')
         htable = Table.read(hfile, format='fits')
-        ptable = Table.read(pfile, format='fits')
+        ptable = Table.read(pfile, format='fits', memmap=True)
         for idx in range(len(htable)):
             header, rows = parse_header_table(htable, idx)
             data = parse_phot_table(ptable, rows)
@@ -128,5 +130,13 @@ def parse_lsst_model(dirpath):
             data['header'] = header
             # Use the SN id to index the dictionary
             datadict[header['snid']] = data
-
+            ctr += 1
+            if maxitems is not None:
+                if ctr >= maxitems:
+                    break
+        if maxitems is not None:
+            if ctr >= maxitems:
+                break
+    message = 'Done reading {:n} objects'.format(ctr)
+    print(message)
     return datadict
