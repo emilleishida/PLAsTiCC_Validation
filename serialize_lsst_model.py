@@ -24,6 +24,10 @@ def parse_args():
                         help="Limit maximum number of objects to be serialized")
     parser.add_argument('--recursive', action='store_true',
                         help="Serialize a lot of models")
+    parser.add_argument('--root', default='LSST',
+                        help='Specify a root name for the files to parse')
+    parser.add_argument('--model', default='*',
+                        help='Specify a model number string to parse')
 
     return parser.parse_args()
 
@@ -39,9 +43,16 @@ def main():
         import time
         start = time.time()
 
+    rootstr = args.root 
+    if rootstr not in ('LSST', 'IDEAL'):
+        message = 'Unknown root string {}'.format(rootstr)
+        raise ValueError(message) 
+
+    modelstr = args.model
+
     rootdir = str(Path(args.directory))
     if args.recursive:
-        dirpattern = os.path.join(rootdir, 'LSST_*_MODEL*')
+        dirpattern = os.path.join(rootdir, '{}_*_MODEL{}'.format(rootstr, modelstr))
     else:
         dirpattern = rootdir 
     dirs = glob.glob(dirpattern)
