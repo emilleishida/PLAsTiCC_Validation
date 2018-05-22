@@ -20,7 +20,8 @@
 % Add your own macros here:
 
 
-\author{Rick Kessler,  Rahul Biswas, Alex Boucard, Mi Dai, Renee Hlozek, Sauarabh Jha, Lluis Galbany, Emille Ishida, Ashish Mahabal, Kaisey Mandel, Rafael Martinez-Galarza, Daniel Mutukrishna, Tina Peters, Kara Ponder}
+\author{Rick Kessler,  Rahul Biswas, Alex Boucard, Mi Dai, Renee Hlozek,
+Sauarabh W.~Jha, Lluis Galbany, Emille Ishida, Ashish Mahabal, Kaisey Mandel, Rafael Martinez-Galarza, Daniel Mutukrishna, Tina Peters, Kara Ponder}
 
 % ======================================================================
 
@@ -47,7 +48,8 @@ We briefly describe the PLAsTiCC data set that will be tested by the Kaggle team
 \label{sec:intro}
 While we think of the night sky as static, it is filled with sources of light that vary in brightness on timescales from seconds and minutes to months and years. 
 
-Some of these events are classified as \textit{transients}, and can be the observational consequences of a large variety of astronomical phenomena. For example, the cataclismic event that occurs when a supernova explodes generates a bright signal that fades with time, but does not repeat.
+Some of these events are classified as \textit{transients}, and can be the
+observational consequences of a large variety of astronomical phenomena. For example, the cataclysmic event that occurs when a supernova explodes generates a bright signal that fades with time, but does not repeat.
 
 Other events are classified as \textit{variables}, since they can vary their brightness in a periodic (or aperiodic) fashion, and originate from physical process governing high density regions of the Universe such as emission from the active galactic nuclei (AGN) at the hearts of galaxies, or our position in relation to a set of observed objects (e.g. eclipsing binaries).
 
@@ -63,7 +65,7 @@ Different physical processes (and chemical elements) are found at different wave
 
 Photometry is gives the overall information of how bright the source is (how much energy the object is emitting) at a particular moment. It can be described as the low resolution counterpart of spectroscopy - or the integral of all the information stored in the spectra. The resultant photometric magnitudes $m$ are related to the flux in a given (average) wavelength through 
 \begin{equation}
-F = 10^{-0.4m+11} + noise
+F = 10^{-0.4m+11} + \mbox{noise}
 \end{equation}
 
 These magnitudes are precisely the integral of the spectrum over the filter bandpasses of the instrument. A sequence of photometric observations made at different moments in time is called a light curve. It holds the information of how the energy of the source evolves with time and can also be used to characterize different types of supernovae (although the distinction between classes is much more discrete than we would hope it to be). As a consequence, for each object we will have a number of light curves in each filter (or band). For LSST, the filters are defined as the SDSS $ugrizy$ filter set. Not all bands have the same noise properties, and therefore the bands will vary in usefulness for different objects. In addition, the bands are sensitive to different physical processes in the same way as the spectrum, and so will be more or less useful to distinguish between objects.
@@ -78,7 +80,7 @@ Hence if the intrinsic luminosity of an object is known, then its flux can be us
 When working in magnitudes, we connect the distance to the magnitudes via the distance modulus $\mu$:
 
 \begin{equation}
-\mu = m-M = 5\log d_L + 5\log\left(\frac{c}{H_0}\right) + 25,
+\mu = m-M = 5\log_{10} d_L + 25,
 \end{equation}
 
 where $M$ is the (unknown) intrinsic brightness of the object, $d_L$ is measured in megaparsec (Mpc), $c$ is the speed of light and $H_0 \simeq 70$ km/s/Mpc is the Hubble constant. Programs exist to fit for the distance modulus $\mu$ given the light curve points and models for the type of object.
