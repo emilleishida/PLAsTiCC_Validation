@@ -55,7 +55,9 @@ Other events are classified as \textit{variables}, since they can vary their bri
 
 These relatively rapid changing objects can provide important clues about themselves and their environement - as well as the evolution of the universe as a whole (e.g. type Ia supernovae provided the first evidence of the current accelerated expansion of the Universe caused by dark energy). Crucially, the different types of transients and variables, given \textit{different} pieces of information, and therefore, the proper classification of transients is a crucial task in observational astronomy - specially in the light of large data volumes expected for the next generation of astronomical surveys.
 
-The two modes for characterising the light from the objects, are called spectroscopy and photometry.
+The main aim of this challenge is: \textit{can one classify astronomical transients and variables from a photometric data set designed to mimic the data from the upcoming Large Synoptic Survey Telescope (LSST)?} Crucially, the classification will occur on a large test set, but the training data will be a small, and poorly representative training set, to mimic the challenges we face observationally.
+
+We now give more detail on LSST, and the challenge at hand. The two modes for characterising the light from the objects, are called spectroscopy and photometry.
 
 Spectroscopy is the modern equivalent of using a prism to separate a beam of white light in its composite (e.g. rainbow) colours. It is a high resolution measurement which allows us to identify any emission/absorption features indicative of specific chemical elements present in the object - and are also the main source of information enabling classification. Despite being paramount for the classification task, spectroscopy is an extremely time consuming process - with integration times hanging from 20 minutes to a few hours depending on the telescope and brightness of the source.
 
@@ -72,18 +74,19 @@ These band fluxes are the integrals of the appropriately redshifted spectrum ove
 
 In addition to being more cost effective, it is possible to obtain photometry of objects to greater distances (and volumes) in the universe. For an object of given brightness (luminosity), the flux received on earth decreases with the distance to the object as
 \begin{equation}
-F = \frac{L}{4\pi d_L^2}
+F = \frac{L}{4\pi d_L^2}.
 \end{equation}
 
-Hence if the intrinsic luminosity of an object is known, then its flux can be used to determine the distance to the object. This distance is an important tool in classification, since different objects are more likely to be found within or outside of our own galaxy.
 
-When working in magnitudes, we connect the distance to the magnitudes via the distance modulus $\mu$:
+%Hence if the intrinsic luminosity of an object is known, then its flux can be used to determine the distance to the object. This distance is an important tool in classification, since different objects are more likely to be found within or outside of our own galaxy.
 
-\begin{equation}
-\mu = m-M = 5\log_{10} d_L + 25,
-\end{equation}
+%When working in magnitudes, we connect the distance to the magnitudes via the distance modulus $\mu$:
 
-where $M$ is the (unknown) intrinsic brightness of the object, $d_L$ is measured in megaparsec (Mpc), $c$ is the speed of light and $H_0 \simeq 70$ km/s/Mpc is the Hubble constant. Programs exist to fit for the distance modulus $\mu$ given the light curve points and models for the type of object.
+%\begin{equation}
+%\mu = m-M = 5\log_{10} d_L + 25,
+%\end{equation}
+
+%where $M$ is the (unknown) intrinsic brightness of the object, $d_L$ is measured in megaparsec (Mpc), $c$ is the speed of light and $H_0 \simeq 70$ km/s/Mpc is the Hubble constant. Programs exist to fit for the distance modulus $\mu$ given the light curve points and models for the type of object.
 
 New instruments, like the Large Synoptic Survey Telescope (LSST) - scheduled to begin observations in 2022 - will produce an unprecedented number of light curves. Once these transients are detected, we rely on agreements with other telescopes in order to acquire a small number of spectroscopic observations.
 
@@ -105,26 +108,23 @@ The lightcurve data is made of non-homogeneously sampled, non-periodic time seri
 A database over all objects will be provided. The following data are provided:
 
 \begin{itemize}
-\item objectID
-\item right ascension and declination (the sky co ordinates of the object)
-\item MJD (Modified Julian Date) when a trigger was generated
-\item the value of the Milky Way extinction at that position on the sky
-\item redshift
-\item redshift error (this will be small for the spectroscopic training set and large for the photometric test set)
-\item distance modulus
-\item error on the distance modulus
+\item \tt{objid}: the Object ID
+\item \tt{ra, dec:} right ascension and declination (the sky co ordinates of the object) (???)
+\item \tt{newPtrmin}: the minimum Petrosian magnitude: an indication of sky noise
+\item \tt{newPtrmax}: the maximum Petrosian magnitude: an indication of sky brightness
+\item \tt{mwebv, mwebverr}: the value of the Milky Way extinction at that position on the sky, and its associated error
+\item \tt{specz}: the spectroscopic redshift
+\item \tt{photoz, photozerr}: the photometric redshift and its respective redshift error (these entries are null for the training set)
 \end{itemize}
 
-Each object will also have a list of
-
+It will also contain a table of photometry with the following information:
 \begin{itemize}
-\item MJD (Modified Julian Date)
-\item flux in each of the LSST bands
-\item flux error in each of the LSST bands
-\item signal-to-noise value for the flux in each of the LSST bands
-\item photometry flag 
+\item \tt{mjd}: the Modified Julian Date (MJD) of the observations
+\item \tt{pb}: the Petrosian 
+\item \tt{flux}: the measured flux in each of the LSST bands
+\item \tt{fluxerr}: the error on the measured flux in each of the LSST bands
+\item \tt{photflag}: photometry flag, which indicates the quality of the object (eg. it will be flagged if observations have saturated)
 \end{itemize}
-
 
 The training set will also contain the simulated model name, while the test data will not: it is the task of those participating to determine the classification flag of the test set.
 
