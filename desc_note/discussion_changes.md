@@ -15,7 +15,9 @@
 
 ## Astronomy 
 - remove physical mechanism linking variables to high density regions. True for AGN but not rrlyrae/ cepheids etc. 
--  
+- Have some background about MW: coordinates tell us about galactic variables? Extinction?  
+- redshift, dL: How should people use this information?
+
 ## Different ways of observing astronomical objects
 
 ## LSST 
@@ -39,4 +41,4 @@ the columns will be unavailable in the test data.
 # Questions 
 - Has there been a decision that we cannot mention what the object classes being provided in the training sample are ? eg. SNIa has to be some number? 
 - Can we mention the number of classes and number of objects ? This will make it easier to give an example to  users. 18 + 1 (other) according to the training set I was looking at.  
-- 
+- There was email discussion about having DL/photoz in separate file. Ws there a decision on this on Friday 
