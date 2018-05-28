@@ -94,7 +94,12 @@ The training data follow the description above and have the properties and light
 
 \section{Challenge participation}
 \label{sec:conclusion}
-PLAsTiCC participants must return an $M\times X$ table of classification probabilities, where $M$ is the number of objects in the test dataset, and $X$ is the number of classes, including the `other' class. The row entries sum to unity, to ensure normalised probabilities. The winner of the challenge will be the person who minimises the PLAsTiCC metric score (which is described in a separate note included in this challenge). 
+{\plasticc} challenge entries are required to classify each source in the header file of the test data set  based on their properties and light curves. The classification must be into {{\numclasses} + 1}  classes: the {\numclasses} classes of astronomical sources in the training set, and an {\tt others} class which comprises sources that are not in any of the {\numclasses} clases in the training set. This should be done by providing the probability that the source is a member of class X, where X is one of the classes mentioned above. For a {\plasticc} entry to be valid, it must have 
+\begin{enumerate}
+    \item classification probabilities for each source in the header table. These numbers must be floats in the range $\[0, 1.0\]$ and sum up to $1.0$ for each source.
+    \item 
+\end{enumerate} 
+an $M\times X$ table of classification probabilities, where $M$ is the number of objects in the test dataset, and $X$ is the number of classes, including the `other' class. The row entries sum to unity, to ensure normalised probabilities. The winner of the challenge will be the person who minimises the PLAsTiCC metric score (which is described in a separate note included in this challenge). 
 For example, if the challenge was to classify a set of 3 observations into two classes of `star' or `galaxy' classes (and an `other' class), the returned classification table would be $3x3$ matrix:
 
 \begin{table}[htbp!]
