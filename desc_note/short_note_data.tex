@@ -19,7 +19,6 @@
 
 % Add your own macros here:
 \input{plasticc_macros}
-%\newcommand{\plasticc}{PLAsTICC}
 
 \author{Rick Kessler,  Rahul Biswas, Alex Boucard, Mi Dai, Renee Hlozek,
 Saurabh W.~Jha, Lluis Galbany, Emille Ishida, Ashish Mahabal, Kaisey Mandel, Rafael Martinez-Galarza, Daniel Mutukrishna, Tina Peters, Kara Ponder}
@@ -52,26 +51,34 @@ The photometric lightcurve data consist of non-homogeneously sampled, non-period
 A hdf file over all objects will be provided. The following data are provided:
 
 The {\plasticc} data is provided in the form of a HDF5 file, which has two kinds of information. The first
-is a table listing each astronomical source in the data indexed by a unique identifier 'objid' which is a string. Each row of the table lists properties of the source. These are: 
+is a table listing each astronomical source in the data indexed by a unique identifier 'objid' which is a string. Each row of the table lists the properties of the source. These are: 
 \begin{itemize}
 \item {\tt objid}: the Object ID, unique identifier, string
-\item {\tt ra}: right ascension, sky coordinate: co-longitude
-\item {\tt decl}: declination, sky coordinate: co-latitude,  
-\item {\tt mwebv}: the value of the galactic extinction at that position on the sky, and its associated error
-\item {\tt gal_specz}: the spectroscopic redshift (these values are null in the test data)
-\item {\tt gal_photoz, photozerr}: the photometric redshift and its respective redshift error 
+\item {\tt ra}: right ascension, sky coordinate: co-longitude, units are degrees
+\item {\tt decl}: declination, sky coordinate: co-latitude, units are degrees
+\item {\tt mwebv}: a property of the Milky Way along the line of sight to the astronomical source, and is thus a function of the sky coordinates of the source {\tt ra, decl} and determines a wavelength (or {\passband}) dependent dimming and redenning of the source light due to the Mikly Way dust.  
+\item {\specz}: the spectroscopic redshift of the source. This is an extremely accurate measure of redshift, 
+    and is not measured for the test sample. Hence, these values are null in the test data.
+\item {\hostphotoz} : The photometric redshift of the host galaxy of the astronomical source
+\item {\hostphotozerr} : The uncertainty on the {\hostphotoz}
+\item {\class} : The class of the astronomical source. (currently this variable is called `sntype' and will be changed in future)
 \end{itemize}
 
-It will also contain a table of photometry with the following information:
+The second piece of information about the transients is its brightness as a function of time in different {\passband}s, ie. light curves. This is contained in a second table where each row corresponds to an observation of the source at a particular time and passand.  This table includes the following information
 \begin{itemize}
-\item {\tt mjd}: the Modified Julian Date (MJD) of the observations
-\item {\tt flux}: the measured flux in each of the specified $ugrizY$ LSST bands
-\item {\tt fluxerr}: the uncertainty on the measured flux in each of the LSST bands
-\item {\tt photflag}: the photometry flag is a bit mask, describing the photometry at each epoch. {\tt photflag}= 4096 indicates that there is a detection for the current epoch. {\tt photflag} = 6144 (= 4096 + 2048) means that there is a detection for the current epoch and that the 2-detection trigger was satisfied at the current epoch as well.
+\item {\tt mjd}: the time in Modified Julian Date (MJD) of the observation with a unit of day.
+\item {\passband} : The specific LSST {\passband} 'u' or 'g' or 'r' or 'i' or 'z' or 'Y' in which it was viewed. This is a categorical variable of the type string. 
+\item {\tt flux}: the measured flux (brightness) in the {\passband} of observation as listed in the {\passband} column. This is a float.
+\item {\tt fluxerr}: the uncertainty on the measurement of the {\tt flux}  listed above.
+\item {\tt photflag}: ignore.
+\end{itemize}
+
+It should be noted that due to the way the brightness is estimated, the flux may turn out to be negative for dim sources, where the true flux is close to zero. It should also be noted that the data includes `saturated` observations of sources, where the source is
+too bright to obtain a precise measured value. In such cases, the {\tt flux} is set to 0., and the {\tt fluxerr} is set to 10,000,000. Such an observation may not yield a value of {\tt flux}, but it indicates that the source was extremely bright rather than extremely dim at the time of observation. 
+
 
 \clearpage
 As part of the challenge, we provide a Jupyter notebook to read in the data, and a notebook to compute the metrics for the challenge.
-\end{itemize}
 
 The training set will also contain the name of the model used to simulate the transient, while the test data will not: it is the task of those participating to determine the correct model name of the test data set.
 
