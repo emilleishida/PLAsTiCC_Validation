@@ -46,7 +46,7 @@ The Photometric LSST Astronomical Time Series Classification Challenge (PLAsTiCC
 
 \section{Introduction}
 \label{sec:intro}
-PLAsTiCC is a large data challenge where participants are asked to \textit{classify astornomical time series data}. These simulated time series data, or `light curves' are measurements of flux in different astronomical wavelength bands as a function of time, and are simulations of what we expect from the upcoming LSST survey. For each object, the data provided includes summary information: its position on the sky, an estimate of its observed redshift (which correlates with its distance away from Earth), and other properties of the sky near the object. In addition, the light curve \textit{photometry} data on the object is a table of fluxes at different times of observation, and at different wavebands (i.e. the average energy of the light within a range of wavelengths). We go into more detail in the following section about the astronomical terminology used here.
+PLAsTiCC is a large data challenge where participants are asked to \textit{classify astronomical time series data}. These simulated time series data, or `light curves' are measurements of flux in different astronomical wavelength bands as a function of time, and are simulations of what we expect from the upcoming LSST survey. For each object, the data provided includes summary information: its position on the sky, an estimate of its observed redshift (which correlates with its distance away from Earth), and other properties of the sky near the object. In addition, the light curve \textit{photometry} data on the object is a table of fluxes at different times of observation, and at different wavebands (i.e. the average energy of the light within a range of wavelengths). We go into more detail in the following section about the astronomical terminology used here.
 
 In Figure~\ref{fig:lc}, we show three light curves for different types of objects.
 
@@ -57,8 +57,8 @@ In Figure~\ref{fig:lc}, we show three light curves for different types of object
 \includegraphics[scale=0.4,trim = 15mm 45mm 10mm 20mm, clip]{figures/lcplot_model80.pdf}
 \caption{Example light curves in the PLAsTiCC data set. The three example objects display different changes in flux with time typical of real-world objects. They are either transient, and brighten suddenly before fading again into obscurity (top row) or they display flux variability, brightening and fading (bottom figure). This brightening can either be periodic or aperiodic. The top row also illustrates that the brightening of the flux can occur near the edges of the survey, and therefore may not include the full time period of brightening for the object. In addition, all three panels show that seasonal gaps and the instrument cadence of observations can introduce gaps in the light curve.\label{fig:lc}}
 \end{center}
-\end{figure}
-The users are asked to classify the data into XX classes, XX-1 of which are reprsented in the training sample. The final class designation of `other' is meant to capture objects that are hypothesized to exist but have never been observed and are thus not in the training set.
+\end{figure*}
+The users are asked to classify the data into XX classes, XX-1 of which are represented in the training sample. The final class designation of `other' is meant to capture objects that are hypothesized to exist but have never been observed and are thus not in the training set.
 
 
 \section{Astronomy Background}
@@ -70,7 +70,7 @@ observational consequences of a large variety of astronomical phenomena. For exa
 Other events are classified as \textit{variables}, since they can vary their brightness in a periodic (or aperiodic) fashion, and originate from physical process governing high density regions of the Universe such as emission from the active galactic nuclei (AGN) at the hearts of galaxies, or as a result of geometric effects (e.g. eclipsing binary stars that alternately block out each others light from view).
 
 
-These transient objects can provide important clues about themselves and their environement - as well as the evolution of the universe as a whole (e.g. type Ia supernovae provided the first evidence of the current accelerated expansion of the Universe which might be caused by dark energy). 
+These transient objects can provide important clues about themselves and their environment - as well as the evolution of the universe as a whole (e.g. type Ia supernovae provided the first evidence of the current accelerated expansion of the Universe which might be caused by dark energy). 
 
 Each different type of transient and variable provides a different clue that helps us study how stars evolve, the physics of stellar explosions, the chemical enrichment of the cosmos, and the accelerating expansion of the universe.  Therefore, the proper classification of transients is a crucial task in observational astronomy - specially in the light of large data volumes expected for the next generation of astronomical surveys.
 
@@ -93,7 +93,7 @@ These photometric wavelength band fluxes are the integrals of the spectrum over 
 The observations are affected by wavelength-dependent sky noise (due to e.g., moonlight and other sources). 
 High-resolution spectroscopy carries thousands of information bits, and hence the challenge is to use the highly compressed photometric information to perform classification.
 
-Unlike spectroscopy, photometry measures light from a large wavelength range simultaneously, and therefore collects more photons during observation, making it possible to measure light from objects at greater distances than with spectropscopy. For an object of given brightness (luminosity), the flux received on earth decreases with the distance to the object as
+Unlike spectroscopy, photometry measures light from a large wavelength range simultaneously, and therefore collects more photons during observation, making it possible to measure light from objects at greater distances than with spectroscopy. For an object of given brightness (luminosity), the flux received on earth decreases with the distance to the object as
 \begin{equation}
 F = \frac{L}{4\pi d_L^2}.
 \end{equation}
@@ -109,13 +109,13 @@ F = \frac{L}{4\pi d_L^2}.
 %where $M$ is the (unknown) intrinsic brightness of the object, $d_L$ is measured in megaparsec (Mpc), $c$ is the speed of light and $H_0 \simeq 70$ km/s/Mpc is the Hubble constant. Programs exist to fit for the distance modulus $\mu$ given the light curve points and models for the type of object.
 
 
-The final connection is model cosmic distances through an expanding universe cosmological model. In such a cosmology of the universe, the connection distances to objects comes through the redshift, $z$. Redshift is an emperical quantity that is defined by measuring the difference in the observed wavelength $\lambda_o$ of a given feature (e.g. in the spectrum described above) compared to the emitted wavelength $\lambda_e$, or
+The final connection is model cosmic distances through an expanding universe cosmological model. In such a cosmology of the universe, the connection distances to objects comes through the redshift, $z$. Redshift is an empirical quantity that is defined by measuring the difference in the observed wavelength $\lambda_o$ of a given feature (e.g. in the spectrum described above) compared to the emitted wavelength $\lambda_e$, or
 
 \begin{equation}
 z = \frac{\lambda_o - \lambda_e}{\lambda_e}.
 \end{equation}
 
-Just like the Doppler affect that acts on sound waves, redshifting is the analog for light. Using a spectrum to determine the redshift of an object gives the most precise result (with the smallest error $\sigma_$). However photometry of the galaxy that `hosts' the object, can also be used to determine a redshift for an object, the so-called photometric redshift, with a larger uncertainty. 
+Just like the Doppler affect that acts on sound waves, redshifting is the analog for light. Using a spectrum to determine the redshift of an object gives the most precise result (with the smallest error $\sigma_z$). However photometry of the galaxy that `hosts' the object, can also be used to determine a redshift for an object, the so-called photometric redshift, with a larger uncertainty. 
 Photometric redshifts can include so-called catastrophic failures, where the redshift of the object is misassigned. These errors are rare (roughly $2\%$ of the total number of objects), however they can pose serious problems for classification of objects.
 
 %The distance modulus is connected to the cosmological model of the universe as a function of redshift $z$ and the components (like the amout of matter and energy) of the universe. We do not expect participants of this challenge to compute these functions, and will provide the distane modulus and error on the modulus as if the data had been run through a light-curve model fit.
@@ -129,7 +129,7 @@ We will describe the data in the following sections, and discuss the metrics use
 \label{sec:thedata}
 
 The photometric lightcurve data consist of non-homogeneously sampled, non-periodic time series with correlated errors obtained in several wavelength filters.
-A database over all objects will be provided. The following data are provided:
+A hdf file over all objects will be provided. The following data are provided:
 
 \begin{itemize}
 \item {\tt objid}: the Object ID
@@ -144,7 +144,7 @@ It will also contain a table of photometry with the following information:
 \item {\tt mjd}: the Modified Julian Date (MJD) of the observations
 \item {\tt flux}: the measured flux in each of the specified $ugrizY$ LSST bands
 \item {\tt fluxerr}: the uncertainty on the measured flux in each of the LSST bands
-\item {\tt photflag}: the photometry flag is a bit mask, describing the photometry flag at each epoch. {\tt photflag}= 4096 indicates that their is a detection for the current epoch. {\tt photflag} = 6144 (= 4096 + 2048) means that there is a detction for the current epoch and that the 2-detection trigger was satisfied at the current epoch as well.
+\item {\tt photflag}: the photometry flag is a bit mask, describing the photometry at each epoch. {\tt photflag}= 4096 indicates that there is a detection for the current epoch. {\tt photflag} = 6144 (= 4096 + 2048) means that there is a detection for the current epoch and that the 2-detection trigger was satisfied at the current epoch as well.
 
 \clearpage
 As part of the challenge, we provide a Jupyter notebook to read in the data, and a notebook to compute the metrics for the challenge.
@@ -164,7 +164,7 @@ Beware that the training set is based on spectroscopic observations that classif
 
 \section{Challenge participation}
 \label{sec:conclusion}
-PLAsTiCC participants must return an $M\timesX$ table of classification probabilities, where $M$ is the number of objects in the test dataset, and $X$ is the number of classes, including the `other' class. The row entries sum to unity, to ensure normalised probabilities. The winner of the challenge will be the person who maximises the PLAsTiCC metric score (which is described in a separate note included in this challenge). 
+PLAsTiCC participants must return an $M\times X$ table of classification probabilities, where $M$ is the number of objects in the test dataset, and $X$ is the number of classes, including the `other' class. The row entries sum to unity, to ensure normalised probabilities. The winner of the challenge will be the person who maximises the PLAsTiCC metric score (which is described in a separate note included in this challenge). 
 For example, if the challenge was to classify a set of 3 observations into two classes of `star' or `galaxy' classes (and an `other' class), the returned classification table would be $3x3$ matrix:
 
 \begin{table}[htbp!]
@@ -185,7 +185,7 @@ While some members have been shielded from information about model specifics, th
 % ----------------------------------------------------------------------
 
 \subsection{Acknowledgments}
-The PLAsTiCC data relies on the inclusion of a host of models of astronomical transients and variables. These will be outlined in a paper to be published once the challenge is complete. While we cannot thank them by name at this stage (as this would no doubt identify the models included in the challenge)  we acknowledge their contributions anonymously at this stage. This work was supported by an LSST Corporation Enabling Science grant, and a Dark Energy Science Collaboration Workshop support grant.
+The PLAsTiCC data relies on the inclusion of a host of models of astronomical transients and variables. These will be outlined in a paper to be published once the challenge is complete. While we cannot thank them by name at this stage (as this would no doubt identify the models included in the challenge), we acknowledge their contributions anonymously at this stage. This work was supported by an LSST Corporation Enabling Science grant, and a Dark Energy Science Collaboration Workshop support grant.
 
 %%% Here is where you should add your specific acknowledgments, remembering that some standard thanks will be added via the \code{desc-tex/ack/*.tex} and \code{contributions.tex} files.
 
