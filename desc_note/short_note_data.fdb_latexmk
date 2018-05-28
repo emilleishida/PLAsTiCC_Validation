@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1527352653 "short_note_data.tex" "short_note_data.pdf" "short_note_data" 1527352653
+["pdflatex"] 1527485189 "short_note_data.tex" "short_note_data.pdf" "short_note_data" 1527485189
   "./desc-tex/ack/standard.tex" 1526864545 892 9ab314b2f135ba68d6a6a56792a52809 ""
   "./desc-tex/logos/header.png" 1526864545 51570 133f95654a30aafaa76ef1de5b6e5c98 ""
   "./desc-tex/styles/docswitch.sty" 1526864545 4944 8671bbf60f47c95c4f5618dccf96bee2 ""
@@ -111,7 +111,7 @@
   "/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1432479641 1764542 91654ba72bdb667e84ea24f076ae16d8 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "authors.tex" 1527352598 3581 1fb2326c892bf372a31cfb31485ce983 ""
+  "authors.tex" 1527485179 3660 4af4f02a7f2813641819fd58a5bb7821 ""
   "desc-tex/ack/standard.tex" 1526864545 892 9ab314b2f135ba68d6a6a56792a52809 ""
   "desc-tex/logos/header.png" 1526864545 51570 133f95654a30aafaa76ef1de5b6e5c98 ""
   "desc-tex/styles/docswitch.sty" 1526864545 4944 8671bbf60f47c95c4f5618dccf96bee2 ""
@@ -120,10 +120,10 @@
   "figures/lcplot_model01a.pdf" 1527294523 18148 04af45aba9f0ee60d9d87fe536a5b390 ""
   "figures/lcplot_model01b.pdf" 1527294526 22691 8068aa213fa881c40ae0a6fb5d3aa579 ""
   "figures/lcplot_model80.pdf" 1527294528 22923 b169a4f115a94dadd6e3a3f3a27ae4f8 ""
-  "short_note_data.aux" 1527352601 1595 14ae65cb486d6088fa98a73c0f14da44 ""
-  "short_note_data.tex" 1527352651 15932 20ad3361ae0ff9011af84593b5fd3926 ""
+  "short_note_data.aux" 1527485185 1841 522c34e61b67b088f4e268110a1828f0 ""
+  "short_note_data.tex" 1527485170 16679 2d72d598192f7b162a915137bcc9e901 ""
   (generated)
-  "short_note_data.pdf"
-  "short_note_dataNotes.bib"
-  "short_note_data.log"
   "short_note_data.aux"
+  "short_note_data.pdf"
+  "short_note_data.log"
+  "short_note_dataNotes.bib"
