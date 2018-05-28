@@ -164,7 +164,7 @@ Beware that the training set is based on spectroscopic observations that classif
 
 \section{Challenge participation}
 \label{sec:conclusion}
-PLAsTiCC participants must return an $M\times X$ table of classification probabilities, where $M$ is the number of objects in the test dataset, and $X$ is the number of classes, including the `other' class. The row entries sum to unity, to ensure normalised probabilities. The winner of the challenge will be the person who maximises the PLAsTiCC metric score (which is described in a separate note included in this challenge). 
+PLAsTiCC participants must return an $M\times X$ table of classification probabilities, where $M$ is the number of objects in the test dataset, and $X$ is the number of classes, including the `other' class. The row entries sum to unity, to ensure normalised probabilities. The winner of the challenge will be the person who minimises the PLAsTiCC metric score (which is described in a separate note included in this challenge). 
 For example, if the challenge was to classify a set of 3 observations into two classes of `star' or `galaxy' classes (and an `other' class), the returned classification table would be $3x3$ matrix:
 
 \begin{table}[htbp!]
