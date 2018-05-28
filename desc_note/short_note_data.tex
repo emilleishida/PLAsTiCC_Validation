@@ -47,16 +47,14 @@ The Photometric LSST Astronomical Time Series Classification Challenge (PLAsTiCC
 \section{The data}
 \label{sec:thedata}
 
-The photometric lightcurve data consist of non-homogeneously sampled, non-periodic time series with correlated errors obtained in several wavelength filters.
-A hdf file over all objects will be provided. The following data are provided:
 
 The {\plasticc} data is provided in the form of a HDF5 file, which has two kinds of information. The first
-is a table listing each astronomical source in the data indexed by a unique identifier 'objid' which is a string. Each row of the table lists the properties of the source. These are: 
+is a table listing each astronomical source in the data indexed by a unique identifier 'objid' which is a string. Each row of the table lists the properties of the source as follows: 
 \begin{itemize}
 \item {\tt objid}: the Object ID, unique identifier, string
 \item {\tt ra}: right ascension, sky coordinate: co-longitude, units are degrees
 \item {\tt decl}: declination, sky coordinate: co-latitude, units are degrees
-\item {\tt mwebv}: a property of the Milky Way along the line of sight to the astronomical source, and is thus a function of the sky coordinates of the source {\tt ra, decl} and has an impact on the observations of objects along the same line of sight as described in subsection~\ref{subsec:observmethods} and determines a wavelength (or {\passband}) dependent dimming and redenning of the source light due to the Mikly Way dust.  
+\item {\tt mwebv}: a property of the Milky Way dust along the line of sight to the astronomical source, and is thus a function of the sky coordinates of the source {\tt ra, decl}. This is used  to determine a {\passband} dependent dimming and redenning of light from astronomical sources as described in subsection~\ref{subsec:observmethods}.
 \item {\specz}: the spectroscopic redshift of the source. This is an extremely accurate measure of redshift, 
     and is not measured for the test sample. Hence, these values are null in the test data.
 \item {\hostphotoz} : The photometric redshift of the host galaxy of the astronomical source. While this is meant to be a proxy for {\specz}, there can be large differences between the two and should be regarded as a far less accurate version of {\specz}. 
@@ -64,20 +62,20 @@ is a table listing each astronomical source in the data indexed by a unique iden
 \item {\class} : The class of the astronomical source as a string. (currently this variable is called `sntype' and will be changed in future)
 \end{itemize}
 
-The second piece of information about the transients is its brightness as a function of time in different {\passband}s, ie. light curve data. This is contained in a second table where each row corresponds to an observation of the source at a particular time and passand.  This table includes the following information
+The second table of information about the transients is its brightness as a function of time in different {\passband}s, ie. light curve data. Each row of this table corresponds to an observation of the source at a particular time and passand.  This table includes the following information
 \begin{itemize}
-\item {\tt mjd}: the time in Modified Julian Date (MJD) of the observation with a unit of day.
-\item {\passband} : The specific LSST {\passband} 'u' or 'g' or 'r' or 'i' or 'z' or 'Y' in which it was viewed. This is a categorical variable of the type string. 
+\item {\tt mjd}: the time (float) in Modified Julian Date (MJD) of the observation with a unit of day.
+\item {\passband} : The specific LSST {\passband} string: u, g, r, i, z, Y in which it was viewed. 
 \item {\tt flux}: the measured flux (brightness) in the {\passband} of observation as listed in the {\passband} column. This is a float.
 \item {\tt fluxerr}: the uncertainty on the measurement of the {\tt flux}  listed above.
 \item {\tt photflag}: ignore.
 \end{itemize}
 
-A few caveats about the light curve data are in order.
+A few caveats about the light curve data are as follows:
 \begin{itemize}
-    \item \textbf{Negative Flux} Due to the way the brightness is estimated, the flux may turn out to be negative for dim sources, where the true flux is close to zero. 
+    \item \textbf{Negative Flux} Due to statistical fluctuations and the way the brightness is estimated, the flux may be negative for dim sources, where the true flux is close to zero. 
     \item \textbf{saturated observations} The light curves include `saturated' observations of sources, where the source is
-too bright to obtain a precise measured value. In such cases, the {\tt flux} is set to 0., and the {\tt fluxerr} is set to 10,000,000. Such an observation may not yield a value of {\tt flux}, but it indicates that the source was extremely bright rather than extremely dim at the time of observation. 
+too bright to obtain a measured value. In such cases, the {\tt flux} is set to 0., and the {\tt fluxerr} is set to 10,000,000. Such an observation may not yield a value of {\tt flux}, but it indicates that the source was extremely bright rather than extremely dim at the time of observation. 
 \end{itemize}
 
 \clearpage
@@ -86,8 +84,10 @@ It is possible that the distribution of properties (as found in the header table
 \subsection{Obtaining the data and Scoring a classification}
 The header table is located in the sample HDF5 file at the path {\header}, while the light curve is stored at the path `objid' in the sample HDF5 file. As part of the challenge, we provide an example Jupyter notebook to read in the data from an HDF5 file, and a notebook to compute the metrics for the challenge.
 
-\subsection{Training data}
-The training data follow the description above and have the properties and light curves of a set of {\numObjectsTraining} astronomical sources and are meant to represent the kind of brighter objects for which obtaining expensive spectroscopy might be possible. The test data, meanwhile are supposed to be all of the data for which no expensive spectroscopy was obtained. Therefore, the test data has `NULL' entries for the two columns {\specz} and {\class}. Moreover, because of what they \textbf{ do  not form a fair sample of the test data set.} For example, The training data will necessarily be comprised of nearby, low redshift, brighter samples while the test data will contain higher redshift, fainter and more distant objects. It is entirely possible that there will be sources in test data, that do not have any counterparts in the training set.
+\subsection{Training And Test Data}
+The training data follow the description above and have the properties and light curves of a set of {\numObjectsTraining} astronomical sources and are meant to represent the brighter objects for which obtaining expensive spectroscopy is possible. The test data represent all of the data which have no spectroscopy.
+Therefore, the test data has `NULL' entries for the two columns {\specz} and {\class}. Moreover, for this reason their properties are \textbf{non-representative} of distributions of the
+the test data set. The training data are mostly comprised of nearby, low redshift, brighter samples while the test data contain higher redshift, fainter and more distant objects. It is entirely possible that there will be sources in test data, that do not have any counterparts in the training set.
 
 
 % ----------------------------------------------------------------------
