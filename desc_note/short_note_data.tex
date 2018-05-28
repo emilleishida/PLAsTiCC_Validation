@@ -61,10 +61,10 @@ is a table listing each astronomical source in the data indexed by a unique iden
     and is not measured for the test sample. Hence, these values are null in the test data.
 \item {\hostphotoz} : The photometric redshift of the host galaxy of the astronomical source
 \item {\hostphotozerr} : The uncertainty on the {\hostphotoz}
-\item {\class} : The class of the astronomical source. (currently this variable is called `sntype' and will be changed in future)
+\item {\class} : The class of the astronomical source as a string of an integer. (currently this variable is called `sntype' and will be changed in future)
 \end{itemize}
 
-The second piece of information about the transients is its brightness as a function of time in different {\passband}s, ie. light curves. This is contained in a second table where each row corresponds to an observation of the source at a particular time and passand.  This table includes the following information
+The second piece of information about the transients is its brightness as a function of time in different {\passband}s, ie. light curve data. This is contained in a second table where each row corresponds to an observation of the source at a particular time and passand.  This table includes the following information
 \begin{itemize}
 \item {\tt mjd}: the time in Modified Julian Date (MJD) of the observation with a unit of day.
 \item {\passband} : The specific LSST {\passband} 'u' or 'g' or 'r' or 'i' or 'z' or 'Y' in which it was viewed. This is a categorical variable of the type string. 
@@ -73,21 +73,21 @@ The second piece of information about the transients is its brightness as a func
 \item {\tt photflag}: ignore.
 \end{itemize}
 
-It should be noted that due to the way the brightness is estimated, the flux may turn out to be negative for dim sources, where the true flux is close to zero. It should also be noted that the data includes `saturated` observations of sources, where the source is
+A few caveats about the light curve data are in order.
+\begin{itemize}
+    \item \textbf{Negative Flux} Due to the way the brightness is estimated, the flux may turn out to be negative for dim sources, where the true flux is close to zero. 
+    \item \textbf{saturated observations} The light curves include `saturated' observations of sources, where the source is
 too bright to obtain a precise measured value. In such cases, the {\tt flux} is set to 0., and the {\tt fluxerr} is set to 10,000,000. Such an observation may not yield a value of {\tt flux}, but it indicates that the source was extremely bright rather than extremely dim at the time of observation. 
-
+\end{itemize}
 
 \clearpage
-As part of the challenge, we provide a Jupyter notebook to read in the data, and a notebook to compute the metrics for the challenge.
+It is possible that the distribution of properties (as found in the header table) could be different for different classes of astrophysical sources. For example, sources that are extremely dim, may only be found in our own galaxy the Milky Way, and thus their redshifts will be close to zero, and their locations are likely to be clustered around the parts of the sky where the Milky Way is densely populated. Sources that are somewhat brighter, but still too dim to be see from large cosmological distances may be found at low redshifts only. On the other hand, extremely bright sources which are visible for extremely large distances may tend be found at higher redshifts due to larger physical volume at high redshifts. On the other hand, the signature of a particular class of astrophysical source is to be found in its light curve, which is a degraded and compressed version of its spectral evolution. 
 
-The training set will also contain the name of the model used to simulate the transient, while the test data will not: it is the task of those participating to determine the correct model name of the test data set.
-
+\subsection{Obtaining the data and Scoring a classification}
+The header table is located in the sample HDF5 file at the path {\header}, while the light curve is stored at the path `objid' in the sample HDF5 file. As part of the challenge, we provide an example Jupyter notebook to read in the data from an HDF5 file, and a notebook to compute the metrics for the challenge.
 
 \subsection{Training data}
-The training data will be a subset of $\sim 5000$ objects taken from the larger test data set. The relative rates of the data will be adjusted slightly in the training sample. This is important as it introduces a specific bias between the test and the training data. The training data will necessarily be fainter objects (as they mimic the `spectroscopic data' described above). The test data will be the full photometric survey, and so will contain objects that are fainter and in different relative proportions of the full data set. In addition, the test data will contain objects that are at greater distances away from us.
-
-Beware that the training set is based on spectroscopic observations that classify only the brightest objects compared with LSST sensitivity. Therefore the test set will include many more distant objects with no counterpart in the training set.
-
+The training data follow the description above and have the properties and light curves of a set of {\numObjectsTraining} astronomical sources and are meant to represent the kind of brighter objects for which obtaining expensive spectroscopy might be possible. The test data, meanwhile are supposed to be all of the data for which no expensive spectroscopy was obtained. Therefore, the test data has `NULL' entries for the two columns {\specz} and {\class}. Moreover, because of what they \textbf{ do  not form a fair sample of the test data set.} For example, The training data will necessarily be comprised of nearby, low redshift, brighter samples while the test data will contain higher redshift, fainter and more distant objects. It is entirely possible that there will be sources in test data, that do not have any counterparts in the training set.
 
 
 % ----------------------------------------------------------------------
