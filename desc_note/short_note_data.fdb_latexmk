@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1527485189 "short_note_data.tex" "short_note_data.pdf" "short_note_data" 1527485189
+["pdflatex"] 1527487726 "short_note_data.tex" "short_note_data.pdf" "short_note_data" 1527487726
   "./desc-tex/ack/standard.tex" 1526864545 892 9ab314b2f135ba68d6a6a56792a52809 ""
   "./desc-tex/logos/header.png" 1526864545 51570 133f95654a30aafaa76ef1de5b6e5c98 ""
   "./desc-tex/styles/docswitch.sty" 1526864545 4944 8671bbf60f47c95c4f5618dccf96bee2 ""
@@ -25,6 +25,7 @@
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm" 1136768653 1300 63a6111ee6274895728663cf4b4e7e81 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
+  "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm" 1136768653 1528 abec98dbc43e172678c11b3b9031252a ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
@@ -39,8 +40,10 @@
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/latex-fonts/lasy10.tfm" 1136768653 520 82a3d37183f34b6eb363a161dfc002c2 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/latex-fonts/lasy6.tfm" 1136768653 520 4889cce2180234b97cad636b6039c722 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/latex-fonts/lasy8.tfm" 1136768653 520 7bb3abb160b19e0ed6ac404bb59052b7 ""
+  "/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1248133631 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1248133631 36741 fa121aac0049305630cf160b86157ee4 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1248133631 35469 70d41d2b9ea31d5d813066df7c99281c ""
+  "/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1248133631 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -120,10 +123,10 @@
   "figures/lcplot_model01a.pdf" 1527294523 18148 04af45aba9f0ee60d9d87fe536a5b390 ""
   "figures/lcplot_model01b.pdf" 1527294526 22691 8068aa213fa881c40ae0a6fb5d3aa579 ""
   "figures/lcplot_model80.pdf" 1527294528 22923 b169a4f115a94dadd6e3a3f3a27ae4f8 ""
-  "short_note_data.aux" 1527485185 1841 522c34e61b67b088f4e268110a1828f0 ""
-  "short_note_data.tex" 1527485170 16679 2d72d598192f7b162a915137bcc9e901 ""
+  "short_note_data.aux" 1527487686 1841 522c34e61b67b088f4e268110a1828f0 ""
+  "short_note_data.tex" 1527487724 17830 1374f5cafcb6677fad79b104f3cd0a00 ""
   (generated)
-  "short_note_data.aux"
   "short_note_data.pdf"
+  "short_note_data.aux"
   "short_note_data.log"
   "short_note_dataNotes.bib"
