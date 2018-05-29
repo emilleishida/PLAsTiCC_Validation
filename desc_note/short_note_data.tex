@@ -47,7 +47,9 @@ The Photometric LSST Astronomical Time Series Classification Challenge (PLAsTiCC
 \section{The data}
 \label{sec:thedata}
 
-
+The light curve data for each object consists 
+of a time series of fluxes in six filters (ugrizY), 
+with non-uniform  time sampling.
 The {\plasticc} data is provided in the form of a HDF5 file, which has two kinds of information. The first
 is a table listing each astronomical source in the data indexed by a unique identifier 'objid' which is a string. Each row of the table lists the properties of the source as follows: 
 \begin{itemize}
@@ -76,10 +78,15 @@ A few caveats about the light curve data are as follows:
     \item \textbf{Negative Flux} Due to statistical fluctuations and the way the brightness is estimated, the flux may be negative for dim sources, where the true flux is close to zero. 
     \item \textbf{saturated observations} The light curves include `saturated' observations of sources, where the source is
 too bright to obtain a measured value. In such cases, the {\tt flux} is set to 0., and the {\tt fluxerr} is set to 10,000,000. Such an observation may not yield a value of {\tt flux}, but it indicates that the source was extremely bright rather than extremely dim at the time of observation. 
+\item \textbf{Observing Cadences} The objid string has two prefixes ‘DDF’ and `WFD.’  DDF corresponds to
+“Deep Drill Fields” over a small area of sky, but with very high quality 
+light curves. “WFD” corresponds to “wide-fast-deep” over a very large 
+sky area, but with lower quality light curves.
+
 \end{itemize}
 
 \clearpage
-It is possible that the distribution of properties (as found in the header table) could be different for different classes of astrophysical sources. For example, sources that are extremely dim, may only be found in our own galaxy the Milky Way, and thus their redshifts will be close to zero, and their locations are likely to be clustered around the parts of the sky where the Milky Way is densely populated. Sources that are somewhat brighter, but still too dim to be see from large cosmological distances may be found at low redshifts only. On the other hand, extremely bright sources which are visible for extremely large distances may tend to be found at higher redshifts due to larger physical volume at high redshifts. On the other hand, the signature of a particular class of astrophysical source is to be found in its light curve, which is a degraded and compressed version of its spectral evolution. 
+%It is possible that the distribution of properties (as found in the header table) could be different for different classes of astrophysical sources. For example, sources that are extremely dim, may only be found in our own galaxy the Milky Way, and thus their redshifts will be close to zero, and their locations are likely to be clustered around the parts of the sky where the Milky Way is densely populated. Sources that are somewhat brighter, but still too dim to be see from large cosmological distances may be found at low redshifts only. On the other hand, extremely bright sources which are visible for extremely large distances may tend to be found at higher redshifts due to larger physical volume at high redshifts. On the other hand, the signature of a particular class of astrophysical source is to be found in its light curve, which is a degraded and compressed version of its spectral evolution. 
 
 \subsection{Obtaining the data and Scoring a classification}
 The header table is located in the sample HDF5 file at the path {\header}, while the light curve is stored at the path `objid' in the sample HDF5 file. As part of the challenge, we provide an example Jupyter notebook to read in the data from an HDF5 file, and a notebook to compute the metrics for the challenge.
