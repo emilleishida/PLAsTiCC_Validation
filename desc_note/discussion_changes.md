@@ -30,6 +30,7 @@ the columns will be unavailable in the test data.
     - summary information -> properties of the source: (objid-index, ra, decl (stick to one abbreviation), mwebv, mwbv_err, hostgal_specz, hostgal_photoz, hostgal_photoz_err, sntype.) : Should change sntype-'objtype'
     - hostgal -> specz / photoz (if we are not doing mis-identifications?)
     - How do we explain mwebv / mwebv_err / photoz_error. 
+    - Time Series Information : `passband`
 ### Training data
 
 ### Test data
@@ -42,3 +43,5 @@ the columns will be unavailable in the test data.
 - Has there been a decision that we cannot mention what the object classes being provided in the training sample are ? eg. SNIa has to be some number? 
 - Can we mention the number of classes and number of objects ? This will make it easier to give an example to  users. 18 + 1 (other) according to the training set I was looking at.  
 - There was email discussion about having DL/photoz in separate file. Ws there a decision on this on Friday 
+- How has mwebv_err been used in simulation. (Rick)
+-  
