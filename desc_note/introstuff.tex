@@ -1,0 +1,166 @@
+%\documentclass{article}
+%\usepackage{graphicx}
+%\usepackage[a4paper, total={7in, 9in}]{geometry}
+%\usepackage{soul}
+%\input{plasticc_macros}
+
+%\begin{document}
+\section{Introduction}
+
+\label{sec:intro}
+{\plasticc} is a large data challenge where participants are asked to \textit{classify astronomical time series data}. These simulated time series, or `light curves' are measurements of an object's brightness as a function of time - by counting the photon flux in six different astronomical filters. These filters include ultra-violet, optical and infrared regions of the wavelength spectrum. There are a large number of different types of astronomical objects, which make up different astronomical classes. The challenge is to analyse each set of light curves (1 light curve per filter, 6 filters per object) and classify each object as a member of such classes of objects. The time series data provided are simulations of what we expect from the upcoming Large Synoptic Survey Telescope (LSST), which will use an 8~meter telescope to image half the sky roughly once per week and over a ten year duration.
+
+The users are asked to classify the data into {\numTotalClasses} classes,
+{\numClasses} of which are represented in the training sample. The final class is meant to capture objects that are hypothesized to exist but have never been observed and are thus not in the training set.
+
+
+%For each object, the data include summary information: its position on the sky, an estimate of its observed redshift which correlates with its distance away from Earth, and other properties of the sky near the object. In addition, the light curve \textit{photometry} data on the object is a table of fluxes at different times of observation, and at different wavebands (i.e. the average energy of the light within a range of wavelengths). We go into more detail in the following section about the astronomical terminology used here.
+
+
+In Figure~\ref{fig:lc}, we show three example light curves from the training set. The top two panels show `transient' objects which brighten and fade over a short time period. 
+The lower panel shows a variable object which can fade temporarily, but always brightens again. Also note the gaps between observations: small gaps (days to weeks) from the time between telescope visits, and large gaps ($>6$ months) where the object is not visible at night from the LSST site.
+
+\begin{figure*}[htbp!]
+\begin{center} 
+\includegraphics[scale=0.4, trim = 15mm 45mm 10mm 20mm, clip]{figures/lcplot_model01a.pdf}
+\includegraphics[scale=0.4,trim = 15mm 45mm 10mm 20mm, clip]{figures/lcplot_model01b.pdf}
+\includegraphics[scale=0.4,trim = 15mm 45mm 10mm 20mm, clip]{figures/lcplot_model80.pdf}
+\caption{Example light curves in the PLAsTiCC data set. The three example objects display different changes in flux with time that are typical of real objects. The top-right panel  illustrates that the brightening of the flux can occur near observation gaps, and therefore may not include the full time period of brightening (or fading) for the object. In addition, all three panels show that seasonal gaps and the instrument cadence of observations can introduce gaps in the light curve.\label{fig:lc}}
+\end{center}
+\end{figure*}
+
+
+
+\section{Astronomy Background}
+While we think of the night sky as static, it is filled with sources of light that vary in brightness on timescales from seconds and minutes to months and years. 
+
+Some of these events are classified as   \textit{transients}, and are the
+observational consequences of a large variety of astronomical phenomena. 
+For example, the cataclysmic event that occurs when a star explodes generates a 
+bright `supernova' signal that fades with time, but does not repeat.
+Other events are classified as \textit{variables}, since they vary repeatedly in brightness in a periodic 
+(or aperiodic) fashion.
+% and originate from physical process governing high density regions of the Universe such 
+Variable objects include emission from active galactic nuclei (AGN) at the hearts of galaxies, 
+pulsating stars know as Cepheids,
+and eclipsing binary stars that alternate blocking out each other's light from view.
+
+
+These transient objects can provide important clues about themselves and their environment - as well as the evolution of the universe as a whole. For example, measurements of type Ia supernovae light curves provided the first evidence of accelerated expansion of the Universe, which might be caused by dark energy.
+
+Each type of transient and variable provides a different clue that helps us study how stars evolve, the physics of stellar explosions, the chemical enrichment of the cosmos, and the accelerating expansion of the universe.  Therefore, the proper classification of transients is a crucial task in observational astronomy - specially in light of the large data volumes expected for the next generation of astronomical surveys - which includes LSST.
+
+The question we address in this challenge is: \textit{how well can we classify astronomical transients and variables from a  light curve data set designed to mimic the data from LSST?} Crucially, the classification will occur on a large test set, but the training data will be a small, and poorly representative training set, to mimic the challenges we face observationally.
+
+\subsection{Different Methods for observing Astronomical Objects}
+\label{subsec:observmethods}
+Here we give more detail on LSST, and the challenge at hand. The two modes for characterising light from astronomical objects are called `spectroscopy' and `photometry.'
+
+Spectroscopy measures the flux per wavelength interval and is the modern equivalent of using a prism to separate a beam of light into a rainbow of colours. It is a high precision measurement which allows us to identify emission \& absorption features indicative of specific chemical elements present in the object.  Spectroscopy is also the most accurate and reliable tool that enables classification of astronomical transients and variables. Despite being paramount for the classification task, spectroscopy is an extremely time consuming process - with integration times ranging from 20 minutes to a few hours depending on the telescope and brightness of the source.
+
+Given the volume of data expected from the upcoming large scale sky surveys, obtaining spectroscopy for every object is not feasible. An alternative approach is to take an image of the object through different `filters', where each filter selects light of a specific colour, or wavelength range. 
+For LSST there are six filters denoted $u,g,r,i,z,Y$, which select light from 
+ultra-violet ($u$), green ($g$), red ($r$), and three near-infrared filters ($izY$).
+The filter efficiency vs. wavelength is shown in Fig.~\ref{fig:filters}.
+For reference, the human eye is sensitive to light in the $g$ \& $r$ bands.
+The flux of light in each filter, measured as a function of time, is a light curve.
+Classification is performed on these light curves. 
+While a spectrum contains thousands of measurements in small wavelength regions, 
+the light curve data includes at most six measurements (1 per filter) at any given time. 
+The challenge is to classify objects with the highly compressed light curve information. 
+Compared with spectroscopy, the advantage of measuring light curves is that 
+we can observe objects that are much further away and much fainter. In addition,
+light curves from LSST can be measured over half the sky, a much larger region
+than spectroscopy can cover.
+
+
+% Photometry records how bright the source is at a given moment. The photometric information is encoded as the flux (energy from the object). The photometric light curve has six pieces of information, namely the flux in six wavelength bands (named $ugrizY$) at any moment in time.
+% These photometric wavelength band fluxes are the integrals of the spectrum over the filter bandpasses of atmosphere and of the instrument divided by the energy of photons in the central wavelength of the filter. A sequence of photometric observations made at different times is called a light curve. It measures how the energy of the source evolves with time and can also be used to characterize different types of astronomical transients. As a consequence, for each object we will have a number of light curves in each filter (or band). Wavelengths are measured in units of Angstrom ($\AA$), where $1\AA = 10^{-10} m.$ Each band corresponds to a `color', with a width of around 1000 $\AA$, with the full set ranging from $3000\AA$ (blue light) to $9000\AA$ (near infrared light).
+
+Beware that observations are sometimes degraded by moonlight, twilight, clouds, and wind.
+These degradations result in larger flux uncertainties, 
+and this information is included in the light curve data (see Sec 3 below).
+
+In addition to providing light curves, two other pieces of information are provided
+for each object.
+First is a proxy for distance called `redshift', where more distant objects have a larger redshift.
+The training set includes accurate redshifts from the object, but the test data redshifts
+are approximate measurements based on $ugrizY$ filter measurements from the `host galaxy' 
+of the object. While transients brighten and fade, the host galaxy fluxes don't change
+and can thus be measured before an object's light curve starts, or after it has faded.
+Beware that a few percent of the test data redshifts are catastrophic, 
+meaning that some redshift uncertainties greatly under-estimate the difference
+between measured and true redshift.
+
+
+The redshift effect is illustrated in Fig.~\ref{fig:filters}.
+The black curve shows a {\it nearby} Type Ia supernova spectrum at a redshift of 0.01,
+corresponding to a distance of 140 million light years. 
+While the term `nearby' may seem strange in this case, this distance is 
+indeed nearby when compared with the whole range of cosmic distances.
+Visual inspection of the supernova spectrum and the filter efficiencies shows that
+the maximum flux (spectrum summed over filter) is in the 
+green ($g$) filter.
+The dashed curve shows a spectrum from a more distant Supernova, 
+corresponding to a redshift of 0.5, or 5.1 billion light years 
+away.\footnote{The relation between distance and redshift is not linear, 
+but is a function derived from General Relativity which depends on the properties of 
+dark matter and dark energy.}  % end footnote
+The maximum flux is now shifted to the red ($r$) filter.
+As the redshift and distance increase, the maximum flux appears
+in a redder filter: hence the term `redshift.'
+
+The second piece of information is related to extinction from our Galaxy, 
+known as the Milky Way. While our light curve measurements correct
+for the atmosphere and telescope transmission, we do not correct for
+absorption of light travelling through Milky Way `dust' on its way to Earth.
+This absorption is strongest in the ultra-violet $u$-filter, and weakest
+in the infrared filters ($izY$). 
+The data parameter has a strange name called `MWEBV', which is an 
+astronomical measure of how much redder an object appears compared
+to a Milky Way without dust. 
+Larger MWEBV values correspond to more Milky Way dust,
+and objects appearing redder.
+
+
+\begin{figure}
+\includegraphics[width=\textwidth]{figures/spec_filters.png}
+\caption{Shaded regions show $ugrizY$ filter efficiency vs. wavelength.
+Each measured filter flux is a sum of the photons collected within the wavelength range.
+Black curve shows a spectrum for a nearby Type Ia Supernova at redshift 0.01;
+dashed curve shows a spectrum for the same object at redshift 0.5~.
+The dashed spectrum {brightness is much lower than the solid spectrum, and has thus been scaled} to see its shape relative
+to the solid spectrum.}
+\label{fig:filters}
+\end{figure}
+
+
+
+%Unlike spectroscopy, photometry measures light from a large wavelength range simultaneously, and therefore collects more photons during observation, making it possible to measure light from objects at greater distances than with spectroscopy. For an object of given brightness (luminosity), the flux received on earth decreases with the distance to the object as
+
+%Hence if the intrinsic luminosity of an object is known, then its flux can be used to determine the distance to the object. This distance is an important tool in classification, since different objects are more likely to be found within or outside of our own galaxy.
+
+%When working in magnitudes, we connect the distance to the magnitudes via the distance modulus $\mu$:
+
+%\begin{equation}
+%\mu = m-M = 5\log_{10} d_L + 25,
+%\end{equation}
+
+%where $M$ is the (unknown) intrinsic brightness of the object, $d_L$ is measured in megaparsec (Mpc), $c$ is the speed of light and $H_0 \simeq 70$ km/s/Mpc is the Hubble constant. Programs exist to fit for the distance modulus $\mu$ given the light curve points and models for the type of object.
+
+
+%The final connection is model cosmic distances through an expanding universe cosmological model. In such a cosmology of the universe, the connection distances to objects comes through the redshift, $z$. Redshift is an empirical quantity that is defined by measuring the difference in the observed wavelength $\lambda_o$ of a given feature (e.g. in the spectrum described above) compared to the emitted wavelength $\lambda_e$, or
+
+%\begin{equation}  z = \frac{\lambda_o - \lambda_e}{\lambda_e}. \end{equation}
+
+% Just like the Doppler affect that acts on sound waves, redshifting is the analog for light. Using a spectrum to determine the redshift of an object gives the most precise result (with the smallest error $\sigma_z$). However photometry of the galaxy that `hosts' the object, can also be used to determine a redshift for an object, the so-called photometric redshift, with a larger uncertainty. 
+% Photometric redshifts can include so-called catastrophic failures, where the redshift of the object is misassigned. These errors are rare (roughly $2\%$ of the total number of objects), however they can pose serious problems for classification of objects.
+
+%The distance modulus is connected to the cosmological model of the universe as a function of redshift $z$ and the components (like the amout of matter and energy) of the universe. We do not expect participants of this challenge to compute these functions, and will provide the distane modulus and error on the modulus as if the data had been run through a light-curve model fit.
+
+%\subsection{The Large Synoptic Survey Telescope (LSST)}
+%LSST is an ambitious telescope project under construction in Chile, scheduled to begin observations in 2022. With its powerful camera and wide field of view, it will be able to scan the whole sky visible from Chile once every three days. LSST will produce an unprecedented number of light curves by comparing images from day to day and looking for new objects not seen previously, and measuring the flux in those images. Once these transients are detected, we rely on agreements with other telescopes in order to acquire a small number of spectroscopic observations.
+
+
+%We will describe the data in the following sections, and discuss the metrics used to classify objects in a separate note.
+%\end{document}
