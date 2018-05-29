@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1527554108 "short_note_data.tex" "short_note_data.pdf" "short_note_data" 1527554108
+["pdflatex"] 1527556073 "short_note_data.tex" "short_note_data.pdf" "short_note_data" 1527556073
   "/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/adobe/helvetic/phvb7t.tfm" 1136768653 2240 eb56c13537f4d8a0bd3fafc25572b1bd ""
@@ -109,7 +109,7 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1493952070 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "authors.tex" 1527499757 3660 4af4f02a7f2813641819fd58a5bb7821 ""
+  "authors.tex" 1527555287 3661 1d324e43c5e055a3d9378503ff339fc7 ""
   "desc-tex/ack/standard.tex" 1527499762 892 9ab314b2f135ba68d6a6a56792a52809 ""
   "desc-tex/logos/header.png" 1527499762 51570 133f95654a30aafaa76ef1de5b6e5c98 ""
   "desc-tex/styles/docswitch.sty" 1527499762 4944 8671bbf60f47c95c4f5618dccf96bee2 ""
@@ -121,10 +121,10 @@
   "figures/spec_filters.png" 1527552869 195251 d60eb8b27866b787983c67c3f8083c59 ""
   "introstuff.tex" 1527553095 15208 87bd952db3ff7cbf9def36f7d19b67a8 ""
   "plasticc_macros.tex" 1527553762 433 417ab2b62f416df2625df5fcf2f25390 ""
-  "short_note_data.aux" 1527554106 2072 d4d6c8acb0ab7efb175c89a55837b089 ""
-  "short_note_data.tex" 1527553463 12076 4a63ff1846267a1aa849987638f194f0 ""
+  "short_note_data.aux" 1527556071 2072 d4d6c8acb0ab7efb175c89a55837b089 ""
+  "short_note_data.tex" 1527556061 12064 fea4f9245e78681f851b3afd732862fd ""
   (generated)
-  "short_note_data.log"
-  "short_note_data.pdf"
-  "short_note_data.aux"
   "short_note_dataNotes.bib"
+  "short_note_data.pdf"
+  "short_note_data.log"
+  "short_note_data.aux"

@@ -27,12 +27,12 @@ Saurabh W.~Jha, Lluis Galbany, Emille Ishida, Ashish Mahabal, Kaisey Mandel, Raf
 
 \begin{document}
 
-\title{The Photometric LSST Astronomical Time-series Classification Challenge (PLAsTiCC): Data set}
+\title{The Photometric LSST Astronomical Time-series Classification Challenge ({\plasticc}): Data set}
 
 %\maketitlepre
 
 \begin{abstract}
-The Photometric LSST Astronomical Time Series Classification Challenge (PLAsTiCC) is an open data challenge to classify simulated astronomical time series data in preparation for the data from the Large Synoptic Survey Telescope (LSST), that will achieve first light in 2022. We briefly describe the PLAsTiCC data set that will be tested by the Kaggle team. This note will be updated for the full release of the data to the community.
+The Photometric LSST Astronomical Time Series Classification Challenge ({\plasticc}) is an open data challenge to classify simulated astronomical time series data in preparation for the data from the Large Synoptic Survey Telescope (LSST), that will achieve first light in 2022. We briefly describe the {\plasticc} data set that will be tested by the Kaggle team. This note will be updated for the full release of the data to the community.
 
 \end{abstract}
 
@@ -78,9 +78,9 @@ A few caveats about the light curve data are as follows:
     \item \textbf{Negative Flux} Due to statistical fluctuations and the way the brightness is estimated, the flux may be negative for dim sources, where the true flux is close to zero. 
     \item \textbf{saturated observations} The light curves include `saturated' observations of sources, where the source is
 too bright to obtain a measured value. In such cases, the {\tt flux} is set to 0., and the {\tt fluxerr} is set to 10,000,000. Such an observation may not yield a value of {\tt flux}, but it indicates that the source was extremely bright rather than extremely dim at the time of observation. 
-\item \textbf{Observing Cadences} The objid string has two prefixes ‘DDF’ and `WFD.’  DDF corresponds to
+\item \textbf{Observing Cadences} The objid string has two prefixes `DDF’ and `WFD’.  DDF corresponds to
 “Deep Drill Fields” over a small area of sky, but with very high quality 
-light curves. “WFD” corresponds to “wide-fast-deep” over a very large 
+light curves. WFD corresponds to “wide-fast-deep” over a very large 
 sky area, but with lower quality light curves.
 
 \end{itemize}
@@ -110,7 +110,7 @@ As true probabilities, the quantities $P_{ij}$ must satisfy the following criter
 \sum_{j} P_{ij} = 1.0 \qquad \forall i
 \nonumber
 \end{eqnarray*}
-For a {\plasticc} entry to be valid, it must have these probabilities for each class and astronomical source, ie. an entry cannot leave out probabilities on any source, or class. To win the challenge, the entry must be a valid entry and minimise the PLAsTiCC metric score (which is described in a separate note included in this challenge). 
+For a {\plasticc} entry to be valid, it must have these probabilities for each class and astronomical source, ie. an entry cannot leave out probabilities on any source, or class. To win the challenge, the entry must be a valid entry and minimise the {\plasticc} metric score (which is described in a separate note included in this challenge). 
 For a participant using a classifier which decides that an object is of a particular class rather than provide probabilities, the participant has to use their own prescription to define probabilities. For example, a source classified as the first class may be given a probability of 1.0 and all other classes probabilities of 0.0, or the first class may be assigned 0.9 and all other classes may be given uniform probabilities so that the probabilities sum to unity. 
 
 For example, if the challenge was to classify a set of 3 observations into two classes of `star' or `galaxy' classes (and an `other' class), the returned classification table would be $3x3$ matrix:
