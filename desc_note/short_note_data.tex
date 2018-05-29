@@ -94,11 +94,13 @@ the test data set. The training data are mostly comprised of nearby, low redshif
 
 \section{Challenge participation}
 \label{sec:conclusion}
-{\plasticc} challenge entries are required to classify each of the sources in the header file of the test data set  based on their properties and light curves. The classification must be done though the assignment of probabilities $P(\rm{class}\vert\rm{data}_{i}, \rm{training-data}, \rm{knowledge}),$  the probability that the $i\rm{th}$ source in the test data is a member of the class $\rm{class},$ based on $rm{data}_i,$ the combination of properties and light curve data for the object, the training data set, and any outside knowledge the participant may have acquired elsewhere. To specify the entry for a single source, the participant must provide the probabilities of that source belonging to each of the mutually exclusive (non-overlapping) `{{\numclasses}}  classes in the training set, and of not belonging to any of the classes in the training set and therefore denoted by the {\tt others} class. Obviously, high values of $P(\rm{class}\vert\rm{data}_{i}, \rm{training-data}, \rm{knowledge})$ for a particular $\rm{class}$ and $i$ indicate that the participant believes that the ith source is likely to be of class $\rm{class}.$ 
-As true probabilities, the quantities $P(\rm{class}\vert\rm{data}_{i}, \rm{training-data}, \rm{knowledge})$ must satisfy the following criteria:
+{\plasticc} challenge entries are required to classify each of the sources in the header file of the test data set  based on their properties and light curves. The classification must be done though the assignment of probabilities $P_{ij},$ 
+%$P(\rm{class}\vert\rm{data}_{i}, \rm{training-data}, \rm{knowledge}),$ 
+the probability that the $i\rm{th}$ source in the test data is a member of the class $j$ based on the combination of properties and light curve data for the object, the training data set, and any outside knowledge the participant may have acquired elsewhere. To specify the entry for a single source, the participant must provide the probabilities of that source belonging to each of the mutually exclusive (non-overlapping) `{{\numclasses}}  classes in the training set, and of not belonging to any of the classes in the training set and therefore denoted by the {\tt others} class. High values of $P_{ij}$ for a particular class $j$ and object $i$ indicate that the participant believes that the ith source is likely to be a member of the $j$th class. 
+As true probabilities, the quantities $P_{ij}$ must satisfy the following criteria:
 \begin{eqnarray*}
-0.0 \leq P(\rm{class}\vert\rm{data}_{i}, \rm{training-data}, \rm{knowledge}) \leq 1.0 \qquad \forall \rm{class}, i\nonumber \\
-\sum_{\rm{class}} P(\rm{class}\vert\rm{data}_{i}, \rm{training-data}, \rm{knowledge}) = 1.0 \qquad \forall i
+0.0 \leq P_{ij} \rm{knowledge}) \leq 1.0 \qquad \forall i, j \nonumber \\
+\sum_{j} P_{ij} = 1.0 \qquad \forall i
 \nonumber
 \end{eqnarray*}
 For a {\plasticc} entry to be valid, it must have these probabilities for each class and astronomical source, ie. an entry cannot leave out probabilities on any source, or class. To win the challenge, the entry must be a valid entry and minimise the PLAsTiCC metric score (which is described in a separate note included in this challenge). 
@@ -119,12 +121,12 @@ Object ID & $P(star)$ & $P(galaxy)$ & $P(other)$ \\
 \end{center}
 \end{table}
 
-While some members have been shielded from information about model specifics, the PLAsTiCC team involved in validating the data will not be able to participate in the challenge directly, and will only publish classifications on the data once the challenge has completed.
+The {\plasticc} team involved in validating the data will not be able to participate in the challenge directly, and will only publish classifications on the data once the challenge has completed. Some {\plasticc} team members involved in defining metrics will participate in the challenge, but they have not seen any {\plasticc} information about the models or the data.
 
 % ----------------------------------------------------------------------
 
 \subsection{Acknowledgments}
-The PLAsTiCC data relies on numerous members of the astronomical community to provide models of astronomical transients and variables. These models will be described in a paper to be published once the challenge is complete. While we cannot thank them by name at this stage (as this could identify the models included in the challenge), we acknowledge their contributions anonymously at this stage. This work was supported by an LSST Corporation Enabling Science grant, and a Dark Energy Science Collaboration Workshop support grant.
+The {\plasticc} data relies on numerous members of the astronomical community to provide models of astronomical transients and variables. These models will be described in a paper to be published once the challenge is complete. While we cannot thank them by name at this stage (as this could identify the models included in the challenge), we acknowledge their contributions anonymously at this stage. This work was supported by an LSST Corporation Enabling Science grant, and a Dark Energy Science Collaboration Workshop support grant.
 
 %%% Here is where you should add your specific acknowledgments, remembering that some standard thanks will be added via the \code{desc-tex/ack/*.tex} and \code{contributions.tex} files.
 
