@@ -106,7 +106,7 @@ the test data set. The training data are mostly comprised of nearby, low redshif
 the probability that the $i\rm{th}$ source in the test data is a member of the class $j$ based on the combination of properties and light curve data for the object, the training data set, and any outside knowledge the participant may have acquired elsewhere. To specify the entry for a single source, the participant must provide the probabilities of that source belonging to each of the mutually exclusive (non-overlapping) `{{\numclasses}}  classes in the training set, and of not belonging to any of the classes in the training set and therefore denoted by the {\tt others} class. High values of $P_{ij}$ for a particular class $j$ and object $i$ indicate that the participant believes that the ith source is likely to be a member of the $j$th class. 
 As true probabilities, the quantities $P_{ij}$ must satisfy the following criteria:
 \begin{eqnarray*}
-0.0 \leq P_{ij} \rm{knowledge}) \leq 1.0 \qquad \forall i, j \nonumber \\
+0.0 \leq P_{ij} \leq 1.0 \qquad \forall i, j \nonumber \\
 \sum_{j} P_{ij} = 1.0 \qquad \forall i
 \nonumber
 \end{eqnarray*}
