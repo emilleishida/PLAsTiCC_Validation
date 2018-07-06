@@ -1,27 +1,128 @@
-\RequirePackage{docswitch}
-% \flag is set by the user, through the makefile:
-%    make note
-%    make apj
-% etc.
-\setjournal{\flag}
+%\RequirePackage{docswitch}
+%% \flag is set by the user, through the makefile:
+%%    make note
+%%    make apj
+%% etc.
+%\setjournal{\flag}
+%
+%\documentclass[\docopts]{\docclass}
+%
+%% You could also define the document class directly
+%%\documentclass[]{emulateapj}
+%
+%% Custom commands from LSST DESC, see texmf/styles/lsstdesc_macros.sty
+%\usepackage{lsstdesc_macros}
 
-\documentclass[\docopts]{\docclass}
+\documentclass[iop,twocolumn]{emulateapj} 
+%\documentclass{article}
+\usepackage{color}
+\usepackage{natbib}
+\usepackage{subfigure}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{bm}              % boldface math
+\usepackage[amssymb]{SIunits}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage[outercaption]{sidecap} 
+\usepackage{threeparttable}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[version=4]{mhchem}
 
-% You could also define the document class directly
-%\documentclass[]{emulateapj}
+%definitions
+\newcommand{\code}[1]{\texttt{#1}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\rtwo}{\frac{1}{\sqrt{2}}}
+\newcommand{\rtd}{\frac{\delta^+}{\sqrt{2}}}
+\newcommand{\rtc}{\frac{\delta^-}{\sqrt{2}}}
+\newcommand{\I}{\tilde I}
+\newcommand{\Q}{\tilde Q}
 
-% Custom commands from LSST DESC, see texmf/styles/lsstdesc_macros.sty
-\usepackage{lsstdesc_macros}
+\newcommand{\U}{\tilde U}
+\newcommand{\V}{\tilde V}
+\newcommand{\J}{{\tilde E}}
+\renewcommand{\vec}[1]{{\bf #1}}
 
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{9} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{9}  % for normal
+\newcommand{\map}{{\sl WMAP}}
+\newcommand{\planck}{{\it Planck}}
+\newcommand{\wmap}{{\it WMAP}}
+\newcommand{\cobe}{{\sl COBE}}
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+\newcommand{\n}      {{\bf{n}}}
+\newcommand{\EV}[1]  {\langle#1\rangle}
+\newcommand{\lmax}   {l_{\rm max}}
+\newcommand{\mmax}   {m_{\rm max}}
+\newcommand{\uKsq}   {\mbox{$\mu{\rm K}^2$}}
+\newcommand{\uKrs}   {\mbox{$\mu{\rm K}\sqrt{\rm s}$}}
+\newcommand{\dg}     {\mbox{$^{\circ}$}}
+\newcommand{\lsim}   {\mbox{$_<\atop^{\sim}$}}
+\newcommand{\gsim}   {\mbox{$_>\atop^{\sim}$}}
+\newcommand{\lt}     {\mbox{$<$}}
+\newcommand{\gt}     {\mbox{$>$}}
+\newcommand{\order}  {{\cal O}}
+\newcommand{\JJ}     {{\cal J}}
+\newcommand{\<}      {\langle}
+\renewcommand{\>}    {\rangle}
+\newcommand{\amin}   {\mbox{$^\prime\ $}}
+\newcommand{\asec}   {\mbox{$^{\prime\prime}\ $}}
+\newcommand{\ddeg}   {\mbox{${\rlap.}^\circ$}}
+
+\newcommand{\ylm}[2] {{Y_{#1#2}}}
+\newcommand{\ylmcc}[2]{{Y^{*}_{#1#2}}}
+\newcommand{\fnlKS}  {f_{NL}^{\rm local}}
+\newcommand{\fnleq}  {f_{NL}^{\rm equil}}
+
+\newcommand  \cm     {{\rm \,cm}}
+\newcommand  \gtsim  {\lower.5ex\hbox{$\; \buildrel > \over \sim \;$}}
+\newcommand  \ltsim  {\lower.5ex\hbox{$\; \buildrel < \over \sim \;$}}
+\newcommand{\lap} {$\stackrel{<}{_\sim}$}
+\newcommand{\gap} {$\stackrel{>}{_\sim}$}
+
+\newcommand{\LCDM}   {$\Lambda$CDM}
+\newcommand{\etal}   {{\it et.al.}}
+
+% --Equations
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\mat}[1]{\ensuremath{\mathbf #1}}
+\newcommand{\neff}  {$N_{\rm eff}$}
+\newcommand{\mnu} {\Sigma m_\nu}
+
+\def\taua{\mbox{Tau A}}
+
+\newcommand{\iras}{{\sl IRAS}}
+\newcommand{\firas}{{\sl FIRAS}}
+\newcommand{\cobedirbe}{{\sl COBE/DIRBE}}
+\newcommand{\cobedmr}{{\sl COBE/DMR}}
+\newcommand{\cobefiras}{{\sl COBE/FIRAS}}
+\newcommand{\so}{SO}
+\newcommand{\sa}{Simons Array}
+\newcommand{\pbear}{\textsc{Polarbear}}
+\newcommand{\pb}{\textsc{Polarbear}}
+\newcommand{\Pb}{\textsc{Polarbear}}
+\newcommand{\polarbear}{\textsc{Polarbear}}
+\newcommand{\act}{ACT}
+\newcommand{\mrvol}[1]{\textcolor{blue}{In charge: #1}}
+\newcommand{\todo}[1]{{\bf TODO: #1}}
+
+\bibpunct{(}{)}{;}{a}{}{,}
 \usepackage{graphicx}
 \graphicspath{{./}{./figures/}}
 \bibliographystyle{apj}
 
 % Add your own macros here:
-\input{plasticc_macros}
+%\include{plasticc_macros}
+\include{authors}
 
-\author{Rick Kessler,  Rahul Biswas, Alex Boucard, Mi Dai, Renee Hlozek,
-Saurabh W.~Jha, Lluis Galbany, Emille Ishida, Ashish Mahabal, Kaisey Mandel, Rafael Martinez-Galarza, Daniel Mutukrishna, Tina Peters, Kara Ponder}
+
+%\author{Rick Kessler, Rahul Biswas, Alex Boucard, Mi Dai, Renee Hlozek,
+%Saurabh W.~Jha, Lluis Galbany, Emille Ishida, Ashish Mahabal, Kaisey Mandel, Rafael Martinez-Galarza, Daniel Mutukrishna, Tina Peters, Kara Ponder}
 
 % ======================================================================
 
@@ -37,7 +138,7 @@ The Photometric LSST Astronomical Time Series Classification Challenge ({\plasti
 \end{abstract}
 
 % Keywords are ignored in the LSST DESC Note style:
-\dockeys{}
+%\dockeys{}
 
 \maketitlepost
 
