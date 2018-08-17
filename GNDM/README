@@ -1,0 +1,46 @@
+## Notes on GNDM analysis from GN, DM
+
+cadence_analysis - cadence analysis on 20180221 data release. 
+    Showed difference in cadence between Galactic and Extragalactic transients.
+    This is a "feature" - there are three observing seasons in the data with
+    ~90 day gaps. The extra galactic models are only output for the observing
+    season they are active, while the galactic models are output for all
+    seasons. This also affected the PEAK_MJD distribution, and any time-scale
+    based features. Also known to be artifact in 20180316 release (not shown
+    since essentially identical)
+
+feature_KDEs - ridgeline plots of initial feature computations from 20180316
+    release. Only some features included at present since many need to be 
+    reimplemented to work with fluxes. Computed for DDF. In progress for WFD.
+
+features_vs_redshift - 2D KDEs of feature vs redshift to understand evolution.
+    similar to above.
+
+flux_distrib - normalized flux difference = (F_obs - F-sim)/noise
+    summary_plots/ - If the noise properties are right, this should have mean =
+    0 and sigma = 1
+    This was not the case for 20180221 because template flux was not accounted
+    for in noise calculation.
+    This is fixed in 20180316 
+    noise_vs_flux/ - model by model breakdown of noise vs flux
+        There are some sharp delta function like features
+        These are the result of only a limited number of OpSim files being
+        available for the simulation, so a large number of objects all have the
+        same noise properties, even if they are bad.
+        This clustering is artificial - real surveys shouldn't show this.
+        Exarcerbated because most pipelines would fail on really big outliers.
+        Rick will add some estimate of SNR at mag=20 to help filter bad
+        observations.
+
+TODO:
+    - implement more features for flux space
+    - bulk load LCs from PHOT.FITS files
+    - compute features for IDEAL dataset (from Rick)
+    - set bandwidth for KDEs from IDEAL  (from Tina)
+    - compute features on PHOTFLAG=4096 separate from al (GN)
+    - build a first pass SN classifier (DM)
+        - compare against SNmachine (GN)
+    - use isolation forest to identify outliers (GN)
+    - plot outliers (GN/DM)
+
+Stubbs/Rothschild OpSim files to Rick for alternative cadence sim. 
