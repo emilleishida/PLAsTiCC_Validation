@@ -7,8 +7,8 @@ __all__ = ['Metric']
 
 import numpy as np
 
-from .util import weight_sum
-from .util import check_weights
+from util import weight_sum
+from util import check_weights
 
 class Metric(object):
 

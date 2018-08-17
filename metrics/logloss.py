@@ -8,12 +8,12 @@ __all__ = ['LogLoss']
 import numpy as np
 import sys
 
-from .util import weight_sum
-from .util import check_weights
-from .util import det_to_prob as truth_reformatter
-from .util import sanitize_predictions
-from .util import averager
-from .metric import Metric
+from util import weight_sum
+from util import check_weights
+from util import det_to_prob as truth_reformatter
+from util import sanitize_predictions
+from util import averager
+from metric import Metric
 
 class LogLoss(Metric):
 
