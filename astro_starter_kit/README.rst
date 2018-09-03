@@ -21,7 +21,7 @@ Other files:
 - ``data/`` : Example data included with the notebooks
 - ``media/`` : Images and videos included with the notebooks
 - ``README.rst`` : This file
-- ``conda_env_py36.yml`` : a YAML specification to install a compatible environment with conda
+- ``conda_env_py36_osx64.yml`` : a YAML specification to install a compatible environment with conda on OSX
 - ``requirements.txt`` : file with package specifications for pip
 
 If you have questions about the data or the material in the notebook, find us on the Kaggle forums
