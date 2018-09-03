@@ -40,6 +40,7 @@ def parse_phot_table(table, rows):
         data[filt]['mjd'].append(row['MJD'])
         data[filt]['fluxcal'].append(row['FLUXCAL'])
         data[filt]['fluxcalerr'].append(row['FLUXCALERR'])
+        data[filt]['photflag'].append(row['PHOTFLAG'])
 
     return data
 
@@ -73,10 +74,15 @@ def parse_header_table(table, index=0):
     header['snid'] = int(head['SNID'])
     # Redshift
     header['z'] = head['SIM_REDSHIFT_HOST']
+    header['host_specz'] = head['HOSTGAL_SPECZ']
+    header['host_photoz'] = head['HOSTGAL_PHOTOZ']
     # Type
-    header['type'] = head['SIM_NON1a']
+    header['type'] = head['SIM_TYPE_INDEX']
     # Peak MJD
     header['pkmjd'] = head['SIM_PEAKMJD']
+    # Libid
+    header['libid'] = head['SIM_LIBID']
+
     # Peak magnitudes
     for filt in LSST_FILTERS:
         header['pkmag_%s' % filt] = head['SIM_PEAKMAG_%s' % filt]
