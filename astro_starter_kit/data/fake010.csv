@@ -1,4 +1,4 @@
-objid,mjd,passband,flux,flux_err,detected_bool
+object_id,mjd,passband,flux,flux_err,detected_bool
 10,56210.172,1,5.659,3.7,1
 10,56210.188,2,21.32,3.245,1
 10,56210.203,3,13.28,3.221,1
